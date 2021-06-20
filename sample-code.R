@@ -1,0 +1,18 @@
+library(ggplot2)
+library(gridExtra)
+source("LoadDataset.R")
+source("MergeTime.R")
+SubjectList<-LoadDataset()
+SubjectList<-lapply(SubjectList, MergeTime)
+n <- min(vapply(SubjectList, nrow, 0))
+SubjectList<-lapply(SubjectList,head,n)
+
+S1<-SubjectList$Subject1
+plot1<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=HeartRate)) + geom_line(color="Blue") + labs(x='Time')
+plot2<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=SpO2)) + geom_line(color="Red") + labs(x='Time')
+plot3<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=AccX)) + geom_line(color="Green") + labs(x='Time')
+plot4<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=AccY)) + geom_line(color="Brown") + labs(x='Time')
+plot5<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=AccZ)) + geom_line(color="Magenta") + labs(x='Time')
+plot6<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=Temp)) + geom_line(color="Black") + labs(x='Time')
+plot7<-ggplot(S1, aes(x=as.numeric(row.names(S1)), y=EDA)) + geom_line(color="Blue") + labs(x='Time')
+grid.arrange(plot1, plot2, plot3, plot4, plot5, plot6, plot7, nrow=7)
