@@ -1,13 +1,13 @@
 #' LoadDataset
 #'
-#' H συνάρτηση αποσυμπιέζει το dataset αρχείο "HealthySubjectsBiosignalsDataSet.zip". 
-#' Στη συνέχεια εισάγει τα δεδομένα κάθε ατόμου σε προσωρινά data frames, και τα ενώνει 
-#' δημιουργώντας ένα dataframe για κάθε άτομο ("Subject1", "Subject2", κ.λπ.), 
-#' που περιέχει το σύνολο των δεδομένων, δηλαδή τα features Acc, Temp, EDA, HR και SpO2.
-#' Για να αντιμετωπιστεί η μη αντιστοιχία τιμών των δύο αρχείων, λόγω διαφορετικού 
-#' ρυθμού δειγματοληψίας,επαναλαμβάνονται οι ιδιες τιμές των HR και SpO2 για τις 
-#' αντίστοιχες χρονικές στιγμές των Acc, Temp και EDA.
-#' Η συνάρτηση επιστρέφει λίστα με dataframes των features κάθε ατόμου.
+#' The function decompresses the dataset file "HealthySubjectsBiosignalsDataSet.zip".
+#' It then enters each person's data into temporary data frames, 
+#  and merges them to create a dataframe for each person ("Subject1", "Subject2", etc.),
+#' which contains all the data, ie the Acc, Temp, EDA, HR and SpO2.
+#' To deal with the mismatch of the values of the two files,
+#  due to different sampling rate, 
+#  the same values of HR and SpO2 are repeated for the respective moments of Acc, Temp and EDA.
+#' The function returns a list of dataframes of each person's features.
 #' 
 LoadDataset <- function() {
     
